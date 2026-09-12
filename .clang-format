@@ -1,0 +1,36 @@
+AllowShortLambdasOnASingleLine: Inline
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllArgumentsOnNextLine: false
+LambdaBodyIndentation: Signature
+BraceWrapping:
+  BeforeLambdaBody: true
+AlignEscapedNewlines: Right
+ContinuationIndentWidth: 2
+ConstructorInitializerIndentWidth: 2
+AlignAfterOpenBracket: Align
+
+IncludeCategories:
+  - Regex: '^".*"$'              # relative includes
+    Priority: 10
+  - Regex: '^<[[:alpha:]_\/]+>$' # STL
+    Priority: 15 
+  - Regex: '^<yaclib\/.*>$'      # yaclib library public includes
+    Priority: 16 
+  - Regex: '^<nlohmann\/.*>$'    # nlohmann library public includes
+    Priority: 16 
+  - Regex: '^<fmt\/.*>$'         # fmt library public includes
+    Priority: 16 
+  - Regex: '^<.*\.hpp>$'         # our library private includes
+    Priority: 20
+  - Regex: '^<maelstrom\/.*>$'   # our library public includes
+    Priority: 30
+  - Regex: '.*'                  # other libraries
+    Priority: 50
+IncludeBlocks: Regroup
+IndentPPDirectives: AfterHash
