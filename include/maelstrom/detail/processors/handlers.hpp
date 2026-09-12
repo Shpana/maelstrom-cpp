@@ -18,7 +18,8 @@
 
 namespace maelstrom::detail {
 
-template <typename State> class HandlersProcessor {
+template <typename State>
+class HandlersProcessor {
 public:
   HandlersProcessor(yaclib::IExecutor &executor, Network &network);
 

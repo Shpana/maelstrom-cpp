@@ -62,7 +62,8 @@ void maelstrom::Node<State>::UseTransport(
   transport_ = std::move(transport);
 }
 
-template <typename State> bool maelstrom::Node<State>::LoadEnvironment() {
+template <typename State>
+bool maelstrom::Node<State>::LoadEnvironment() {
   auto message = transport_->Recieve();
   if (!message.has_value()) {
     LOG_ERROR() << "Failed to load envrionment information! Cannot parse "
@@ -96,7 +97,8 @@ template <typename State> bool maelstrom::Node<State>::LoadEnvironment() {
   return true;
 }
 
-template <typename State> bool maelstrom::Node<State>::Start() {
+template <typename State>
+bool maelstrom::Node<State>::Start() {
   LOG_INFO() << "Starting!\n";
 
   transport_->Start();
@@ -119,7 +121,8 @@ template <typename State> bool maelstrom::Node<State>::Start() {
   return true;
 }
 
-template <typename State> void maelstrom::Node<State>::Run() {
+template <typename State>
+void maelstrom::Node<State>::Run() {
   if (Start()) {
     while (transport_->IsStreaming()) {
       auto raw_message = transport_->Recieve();
@@ -146,7 +149,8 @@ template <typename State> void maelstrom::Node<State>::Run() {
   Stop();
 }
 
-template <typename State> void maelstrom::Node<State>::Stop() {
+template <typename State>
+void maelstrom::Node<State>::Stop() {
   LOG_INFO() << "Stopping!\n";
 
   cpu_pool_.SoftStop();

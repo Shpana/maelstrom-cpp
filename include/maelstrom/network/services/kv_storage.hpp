@@ -16,17 +16,21 @@ enum struct Consistency : uint8_t {
 
 namespace detail {
 
-template <Consistency C> struct StorageType;
+template <Consistency C>
+struct StorageType;
 
-template <> struct StorageType<Consistency::Linearizable> {
+template <>
+struct StorageType<Consistency::Linearizable> {
   static constexpr std::string_view kType = "lin-kv";
 };
 
-template <> struct StorageType<Consistency::SequentialConsistent> {
+template <>
+struct StorageType<Consistency::SequentialConsistent> {
   static constexpr std::string_view kType = "seq-kv";
 };
 
-template <> struct StorageType<Consistency::LastWriteWins> {
+template <>
+struct StorageType<Consistency::LastWriteWins> {
   static constexpr std::string_view kType = "lww-kv";
 };
 
@@ -56,7 +60,8 @@ private:
   Network::Session &session_;
 };
 
-template <typename V, Consistency C> struct KeyValueStorage<V, C>::ReadHandler {
+template <typename V, Consistency C>
+struct KeyValueStorage<V, C>::ReadHandler {
   static constexpr std::string_view kType = "read";
 };
 

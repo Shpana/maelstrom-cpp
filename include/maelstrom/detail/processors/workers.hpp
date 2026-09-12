@@ -14,11 +14,13 @@
 
 namespace maelstrom::detail {
 
-template <typename State> class WorkersProcessor {
+template <typename State>
+class WorkersProcessor {
 public:
   explicit WorkersProcessor(yaclib::IExecutor &executor, Network &network);
 
-  template <IsWorker<State> Handler, typename... Args> void Add(Args &&...args);
+  template <IsWorker<State> Handler, typename... Args>
+  void Add(Args &&...args);
 
   void Start(Environment env, std::shared_ptr<State> state);
   void Stop();

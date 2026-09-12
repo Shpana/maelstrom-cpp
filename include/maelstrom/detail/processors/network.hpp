@@ -16,7 +16,8 @@ public:
   using Clock = std::chrono::steady_clock;
 
 private:
-  template <WaitPolicy P> struct Waiter;
+  template <WaitPolicy P>
+  struct Waiter;
 
   template <WaitPolicy P>
   using Waiters = std::unordered_map<std::uint64_t, Waiter<P>>;
@@ -76,14 +77,17 @@ private:
   Waiters<WaitPolicy::AtLeastOnce> at_least_once_{}; // Guarded by mtx_
 };
 
-template <> struct NetworkProcessor::Waiter<WaitPolicy::Detached> {};
+template <>
+struct NetworkProcessor::Waiter<WaitPolicy::Detached> {};
 
-template <> struct NetworkProcessor::Waiter<WaitPolicy::Once> {
+template <>
+struct NetworkProcessor::Waiter<WaitPolicy::Once> {
   yaclib::Promise<Response> p;
   std::optional<Clock::time_point> deadline;
 };
 
-template <> struct NetworkProcessor::Waiter<WaitPolicy::AtLeastOnce> {
+template <>
+struct NetworkProcessor::Waiter<WaitPolicy::AtLeastOnce> {
   yaclib::Promise<Response> p;
   Clock::time_point updated_at;
   std::optional<Clock::time_point> deadline;

@@ -13,10 +13,12 @@
 namespace maelstrom {
 
 namespace detail {
-template <typename State> class HandlersProcessor;
+template <typename State>
+class HandlersProcessor;
 }
 
-template <typename State> class HandlerBase {
+template <typename State>
+class HandlerBase {
 public:
   virtual ~HandlerBase() = default;
 
@@ -49,9 +51,11 @@ concept IsHandler =
 
 } // namespace maelstrom
 
-template <typename State> void maelstrom::HandlerBase<State>::Start() {}
+template <typename State>
+void maelstrom::HandlerBase<State>::Start() {}
 
-template <typename State> void maelstrom::HandlerBase<State>::Stop() {}
+template <typename State>
+void maelstrom::HandlerBase<State>::Stop() {}
 
 template <typename State>
 void maelstrom::HandlerBase<State>::StartInternal(
@@ -60,7 +64,8 @@ void maelstrom::HandlerBase<State>::StartInternal(
   state_ = std::move(state);
 }
 
-template <typename State> void maelstrom::HandlerBase<State>::StopInternal() {}
+template <typename State>
+void maelstrom::HandlerBase<State>::StopInternal() {}
 
 template <typename State>
 State &maelstrom::HandlerBase<State>::GetState() const {

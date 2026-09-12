@@ -12,10 +12,12 @@
 namespace maelstrom {
 
 namespace detail {
-template <typename State> class WorkersProcessor;
+template <typename State>
+class WorkersProcessor;
 }
 
-template <typename State> class WorkerBase {
+template <typename State>
+class WorkerBase {
 public:
   using Clock = std::chrono::steady_clock;
 
@@ -67,9 +69,11 @@ template <typename State>
 maelstrom::WorkerBase<State>::WorkerBase(Clock::duration period)
   : period_{period} {}
 
-template <typename State> void maelstrom::WorkerBase<State>::Start() {}
+template <typename State>
+void maelstrom::WorkerBase<State>::Start() {}
 
-template <typename State> void maelstrom::WorkerBase<State>::Stop() {}
+template <typename State>
+void maelstrom::WorkerBase<State>::Stop() {}
 
 template <typename State>
 void maelstrom::WorkerBase<State>::StartInternal(Environment env,
@@ -79,7 +83,8 @@ void maelstrom::WorkerBase<State>::StartInternal(Environment env,
   next_deadline_ = Clock::now() + period_;
 }
 
-template <typename State> void maelstrom::WorkerBase<State>::StopInternal() {}
+template <typename State>
+void maelstrom::WorkerBase<State>::StopInternal() {}
 
 template <typename State>
 State &maelstrom::WorkerBase<State>::GetState() const {

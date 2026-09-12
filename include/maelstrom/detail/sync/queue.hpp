@@ -7,7 +7,8 @@
 
 namespace maelstrom::detail {
 
-template <typename V> class UnboundedBlockingQueue {
+template <typename V>
+class UnboundedBlockingQueue {
 public:
   void Push(V value) {
     std::lock_guard guard{mtx_};

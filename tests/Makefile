@@ -3,9 +3,9 @@ TESTS+=init-test
 TESTS+=echo-test
 TESTS+=echo-deferred-test
 TESTS+=network-processor-test
+TESTS+=dependencies-test
 
-TEST_TARGETS:=
-TEST_TARGETS+=$(addprefix build-,$(TESTS))
+TEST_TARGETS:=$(addprefix build-,$(TESTS))
 
 .PHONY: $(TEST_TARGETS)
 $(TEST_TARGETS): build-%:

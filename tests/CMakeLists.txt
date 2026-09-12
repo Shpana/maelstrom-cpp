@@ -10,6 +10,7 @@ set(MAELSTROM_CPP_TEST_SOURCES
   echo_test.cpp
   echo_deferred_test.cpp
   network_processor_test.cpp
+  dependencies_test.cpp
   )
 
 foreach(TEST_SOURCE ${MAELSTROM_CPP_TEST_SOURCES})
